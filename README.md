@@ -53,11 +53,15 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the load balancer machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+Only the JumpBox machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
 - For admin access you can only access the jumpbox and for the dvwa via LB only and ELK only accepts web from home.
 
 Machines within the network can only be accessed by host machine.
-- Which machine did you allow to access your ELK VM? Jumpbox What was its IP address? 40.77.61.91/dynamic IPV4 
+- Which machine did you allow to access your ELK VM? 
+  Jumpbox 
+
+- What was its IP address? 
+  40.77.61.91/dynamic IPV4 
 
 A summary of the access policies in place can be found in the table below.
 
