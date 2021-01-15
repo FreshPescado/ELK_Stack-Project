@@ -67,21 +67,23 @@ A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box |     No              | 10.0.0.5 10.0.0.6    |
-|          |                     | 10.0.0.7             |
-|          |                     |                      |
-
+| Jump Box | Yes                 | 172.116.233.158      |
+| ELK      | No                  | 10.0.0.1-254         |
+| Web-1    | No                  | 10.0.0.1-254         |
+| Web-2    | No                  | 10.0.0.1-254         |
+| Web-3    | No                  | 10.0.0.1-254         |
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- What is the main advantage of automating configuration with Ansible? Ansible allows IT administrators to automate away the drudgery from their daily tasks.
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because
+using automated configuration allows for a more accessible environment and allows developers and programmers of multiple skill levels to deploy configurations. It also frees up time which would be spent  configuring ELK and can now be devoted to other more important tasks.
 
 The playbook implements the following tasks:
-- In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc.
-- name: Install docker.io
-  name: Install python3-pip
-  name: Install Docker module
-  name: download and launch a docker elk container
+The playbook implements the following tasks:
+Install docker.io
+Installs pip3 for python
+Install the docker python module
+Use sysctl module to increase memory usage
+Downloads and launches a docker elk container.
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
@@ -103,15 +105,6 @@ These Beats allow us to collect the following information from each machine:
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the filebeat-playbook.yml file to /etc/ansible/(mkdirfile_name if you want to).
-- Update the hosts file to include webservers: 10.0.0.5 ansible_python_interpreter=/usr/bin/python3
-                                               10.0.0.6 ansible_python_interpreter=/usr/bin/python3
-                                               10.0.0.7 ansible_python_interpreter=/usr/bin/python3
-- Run the playbook, and navigate to each webserver to check that the installation worked as expected.
-
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? https://github.com/FreshPescado/ELK_Stack-Project/blob/main/ansible Where do you copy it? 
-- _Which file do you update to make Ansible run the playbook on a specific machine? hosts file. How do I specify which machine to install the ELK server on versus which to install Filebeat on? added the ELK server to the host file, and specified in YML file that it was installed. 
-- _Which URL do you navigate to in order to check that the ELK server is running?  http://[your.VM.IP]:5601/app/kibana.
-
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+- Copy the  file to /etc/ansible.
+- update the hosts files to include the IP's of your elk server [10.1.0.4] and the webservers [10.0.05-6] [10.0.0.8] under their respective columns
+- Run the playbook, and navigate to http://13.82.212.3:5601/app/kibana to check that the installation worked as expected.
